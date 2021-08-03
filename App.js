@@ -1,21 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { NativeRouter } from 'react-router-native';
-import { Login, Signup } from './client/components/AuthForm';
-//how to choose which to render...
+import Routes from './client/components/Routes';
+import store from './client/store';
+import {Provider} from 'react-redux'
+
 
 //import store and do the provider stuff
 //import navbar, routes
 
-
 export default function App() {
   return (
     <NativeRouter>
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <StatusBar style='auto' />
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          {/* navbar */}
+          <Routes />
+        </View>
+      </Provider>
     </NativeRouter>
   );
 }

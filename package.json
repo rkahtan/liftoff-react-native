@@ -10,6 +10,8 @@
     "seed": "node script/seed.js"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-firebase/app": "^12.4.0",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "eslint": "^7.32.0",
@@ -25,7 +27,12 @@
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-web": "~0.13.12",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
     "react-router-native": "^5.2.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "sequelize": "^6.6.5"
   },
   "devDependencies": {
