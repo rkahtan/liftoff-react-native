@@ -13,20 +13,17 @@ class AuthForm extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-  handleSubmit(PressEvent) {
-     //evt.preventDefault()
-      //form's name prop is login or signup
+  handleSubmit() {
 
-      //are there events in react native?
-      //PressEvent object is returned in the callback as a result of user press interaction
-      console.log(PressEvent)
-      // const formName = evt.target.name
-      // const username = evt.target.username.value
-      //NEW: const username = this.state.username
-      // const password = evt.target.password.value
-      //NEW: const password = this.state.password
+      
+      const username = this.state.username
+      const password = this.state.password
+      const formName = this.props.name
 
-      //call this.props.submit with info
+      console.log(username, password, formName)
+      //this.props.submit(username, password, formName)
+
+      
   }
   
   
@@ -104,7 +101,7 @@ const mapSignup = state => {
 //this sets state to user or an error
 const mapDispatch = dispatch => {
   return {
-    submit: () => dispatch(authenticate(username, password, formName))
+    submit: (username, password, formName) => dispatch(authenticate(username, password, formName))
     }
 }
 
