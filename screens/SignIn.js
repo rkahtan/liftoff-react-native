@@ -21,7 +21,6 @@ export default function SignIn() {
     setPassword('');
   };
 
-  //back button to welcome screen
 
   return (
     <View style={styles.container}>

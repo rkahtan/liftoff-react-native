@@ -43,7 +43,6 @@ export default function SignUp({ navigation }) {
   };
 
 
-  //back button to welcome screen
 
 
   return (

@@ -44,13 +44,14 @@ export default function Dashboard({ navigation }) {
 
 const styles = StyleSheet.create({
   button: {
-    width: 150,
-    padding: 5,
-    backgroundColor: '#ff9999',
-    borderWidth: 2,
+    width: 200,
+    padding: 10,
+    backgroundColor: '#223023',
+    borderWidth: 3,
     borderColor: 'white',
     borderRadius: 15,
     alignSelf: 'center',
+    margin: "4%",
   },
   buttonText: {
     fontSize:20,
@@ -61,23 +62,22 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#3FC5AB',
+    backgroundColor: '#899C89',
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
     textAlign: 'center',
     fontSize: 20,
-    fontStyle: 'italic',
     marginTop: '2%',
     marginBottom: '10%',
     fontWeight: 'bold',
-    color: 'black',
+    color: 'white',
   },
   titleText: {
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#2E6194',
+    color: 'white',
   },
 });
