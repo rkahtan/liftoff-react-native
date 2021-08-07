@@ -21,6 +21,8 @@ export default function SignIn() {
     setPassword('');
   };
 
+  //back button to welcome screen
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Sign in to your account:</Text>
@@ -41,7 +43,7 @@ export default function SignIn() {
       />
 
       <TouchableOpacity style={styles.button} onPress={handlePress}>
-        <Text style={styles.buttonText}>Sumbit</Text>
+        <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
 
     </View>
@@ -51,13 +53,13 @@ export default function SignIn() {
 const styles = StyleSheet.create({
   button: {
     width: 200,
-    padding: 5,
-    backgroundColor: '#ff9999',
-    borderWidth: 2,
+    padding: 10,
+    backgroundColor: '#223023',
+    borderWidth: 3,
     borderColor: 'white',
     borderRadius: 15,
     alignSelf: 'center',
-    margin: "2%",
+    margin: "4%",
   },
   buttonText: {
     fontSize:20,
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#3FC5AB',
+    backgroundColor: '#899C89',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
     width: 300,
     fontSize:18,
     borderWidth: 1,
-    borderColor:'#a4eddf',
+    borderColor:'white',
     padding: 10,
     margin: 5,
   },
@@ -85,6 +87,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     margin: 10,
     fontWeight: 'bold',
-    color: '#2E6194',
+    color: 'white',
   }
 });

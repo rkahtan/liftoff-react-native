@@ -42,6 +42,10 @@ export default function SignUp({ navigation }) {
     }
   };
 
+
+  //back button to welcome screen
+
+
   return (
     <SafeAreaView>
      <View style={styles.container}>
@@ -102,19 +106,19 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#3FC5AB',
+    backgroundColor: '#899C89',
     alignItems: 'center',
     justifyContent: 'center',
   },
   button: {
     width: 200,
-    padding: 5,
-    backgroundColor: '#ff9999',
-    borderWidth: 2,
+    padding: 10,
+    backgroundColor: '#223023',
+    borderWidth: 3,
     borderColor: 'white',
     borderRadius: 15,
     alignSelf: 'center',
-    margin: '5%',
+    margin: '4%',
   },
   buttonText: {
     fontSize:20,
@@ -125,7 +129,7 @@ const styles = StyleSheet.create({
   inlineText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'navy',
+    color: 'white',
     textAlign: 'center',
     marginTop: '5%',
   },
@@ -135,13 +139,13 @@ const styles = StyleSheet.create({
     margin: '5%',
     marginTop:'15%',
     fontWeight: 'bold',
-    color: '#2E6194',
+    color: 'white',
   },
   textInput: {
     width: 300,
     fontSize:18,
     borderWidth: 1,
-    borderColor:'#a4eddf',
+    borderColor:'white',
     padding: 10,
     margin: 5,
   },

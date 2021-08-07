@@ -1,7 +1,5 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-//import { NativeRouter } from 'react-router-native';
-//import Routes from './client/components/Routes';
 import store from './client/store';
 import {Provider} from 'react-redux'
 
