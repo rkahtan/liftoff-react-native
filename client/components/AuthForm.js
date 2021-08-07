@@ -102,7 +102,7 @@ const mapSignup = state => {
 const mapDispatch = dispatch => {
   return {
     submit: (username, password, formName) => dispatch(authenticate(username, password, formName))
-    }
+  }
 }
 
 export const Login = connect(mapLogin, mapDispatch)(AuthForm)
