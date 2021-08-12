@@ -30,11 +30,25 @@ export default function Dashboard({ navigation }) {
     loggingOut();
     navigation.replace('Home');
   };
+  const handleExercises = () => {
+    loggingOut();
+    navigation.replace('Home');
+  };
+  const handleWorkouts = () => {
+    loggingOut();
+    navigation.replace('Home');
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>Dashboard</Text>
       <Text style={styles.text}>Hi {firstName}</Text>
+      <TouchableOpacity style={styles.button} onPress={handleExercises}>
+        <Text style={styles.buttonText}>See Your Exercises</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleWorkouts}>
+        <Text style={styles.buttonText}>See Your Workouts</Text>
+      </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>Log Out</Text>
       </TouchableOpacity>

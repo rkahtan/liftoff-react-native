@@ -30,6 +30,8 @@ export async function signIn(email, password) {
   }
 }
 
+
+
 export async function loggingOut() {
   try {
     await firebase.auth().signOut();

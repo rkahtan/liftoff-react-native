@@ -1,6 +1,13 @@
-import { ImageBackground, StyleSheet, View, Text } from 'react-native';
+import {
+  ImageBackground,
+  StyleSheet,
+  View,
+  Text,
+  useEffect,
+} from 'react-native';
 import React from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+
 
 export default function WelcomeScreen({ navigation }) {
   return (
@@ -12,6 +19,12 @@ export default function WelcomeScreen({ navigation }) {
         <Text style={styles.title}>liftoff</Text>
       </View>
       <View style={styles.buttonContainer}>
+
+        {/* {
+          firebase.auth().currentUser !== null &&
+          navigation.navigate('Dashboard')
+        } */}
+
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Sign Up')}
@@ -29,6 +42,11 @@ export default function WelcomeScreen({ navigation }) {
     </ImageBackground>
   );
 }
+
+
+  //use stateful so we can have a component did mount
+  //else use stateless, where navigation is passed in ok, but then useEffect hook to check if logged in
+ 
 
 const styles = StyleSheet.create({
   background: {

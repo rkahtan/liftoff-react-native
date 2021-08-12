@@ -1,7 +1,5 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import store from './client/store';
-import {Provider} from 'react-redux'
 
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -16,6 +14,7 @@ import LoadingScreen from './screens/LoadingScreen';
 import Dashboard from './screens/Dashboard';
 
 const Stack = createStackNavigator();
+//not createNativeStackNavigator? https://reactnavigation.org/docs/hello-react-navigation
 
 export default function App() {
   if (!firebase.apps.length) {
@@ -25,15 +24,16 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Provider store={store}>
+ 
         <Stack.Navigator>
-          <Stack.Screen name={'Loading'} component={LoadingScreen} options={{ headerShown: false }}/>
-          <Stack.Screen name='Home' component={WelcomeScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name={'Loading'} component={LoadingScreen} options={{ headerShown: false }}/>
+          <Stack.Screen name='Home' component={WelcomeScreen} options={{ headerShown: false }} />
           <Stack.Screen name='Sign Up' component={SignUp} />
           <Stack.Screen name='Sign In' component={SignIn} />
           <Stack.Screen name={'Dashboard'} component={Dashboard} options={{ headerShown: false }} />
+          
         </Stack.Navigator>
-      </Provider>
+  
     </NavigationContainer>
   );
 }
