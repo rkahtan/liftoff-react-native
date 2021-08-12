@@ -16,6 +16,7 @@ import SignIn from './screens/SignIn';
 import LoadingScreen from './screens/LoadingScreen';
 import Dashboard from './screens/Dashboard';
 import Exercises from './screens/Exercises'
+import AddExercise from './screens/AddExercise';
 
 
 const Stack = createStackNavigator();
@@ -38,6 +39,7 @@ export default function App() {
           <Stack.Screen name='Sign In' component={SignIn} />
           <Stack.Screen name='Dashboard' component={Dashboard} />
           <Stack.Screen name='Exercises' component={Exercises} />
+          <Stack.Screen name='AddExercise' component={AddExercise} />
           
         </Stack.Navigator>
   
