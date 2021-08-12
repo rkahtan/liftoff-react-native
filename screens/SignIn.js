@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {signIn} from '../API/firebaseMethods';
+// import { auth } from "../firebase";
+// import { connect } from "react-redux";
+
 
 export default function SignIn() {
   const [email, setEmail] = useState('');

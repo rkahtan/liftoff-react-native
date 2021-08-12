@@ -1,26 +1,41 @@
 import axios from 'axios'
+// import { auth } from "../firebase";
 // import history from '../history'
 
 
-const TOKEN = 'token'
 
-const SET_AUTH = 'SET_AUTH'
+const SET_AUTH = "SET_AUTH";
+const REMOVE_AUTH = "REMOVE_AUTH";
 
-const setAuth = auth => ({type: SET_AUTH, auth})
 
-export const me = () => async dispatch => {
-  const token = window.localStorage.getItem(TOKEN)
-  if (token) {
-    const res = await axios.get('/auth/me', {
-      headers: {
-        authorization: token
-      }
-    })
-    //sending to express route with token in header
-    //express route's return value is the user
-    return dispatch(setAuth(res.data))
-  }
-}
+
+
+const setAuth = user => ({type: SET_AUTH, user})
+const removeAuth = () => ({ type: REMOVE_AUTH });
+
+// export const me = () => async dispatch => {
+//   const token = window.localStorage.getItem(TOKEN)
+//   if (token) {
+//     const res = await axios.get('/auth/me', {
+//       headers: {
+//         authorization: token
+//       }
+//     })
+//     //sending to express route with token in header
+//     //express route's return value is the user
+//     return dispatch(setAuth(res.data))
+//   }
+// }
+// export const me = (user) => async (dispatch) => {
+//   try {
+//    //get user here, why is it an argument?
+//     dispatch(setAuth(user || defaultUser));
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+
 
 //what is method here?
 export const authenticate = (username, password, formName) => async dispatch => {

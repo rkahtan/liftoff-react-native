@@ -1,13 +1,14 @@
 import * as firebase from "firebase";
 import "firebase/firestore";
 import {Alert} from "react-native";
+import db from '../config/keys'
 
 export async function registration(email, password, lastName, firstName) {
   try {
     await firebase.auth().createUserWithEmailAndPassword(email, password);
     const currentUser = firebase.auth().currentUser;
 
-    const db = firebase.firestore();
+    //const db = firebase.firestore();
     db.collection("users")
       .doc(currentUser.uid)
       .set({
@@ -39,3 +40,4 @@ export async function loggingOut() {
     Alert.alert('There is something wrong!', err.message);
   }
 }
+

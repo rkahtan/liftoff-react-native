@@ -3,13 +3,17 @@ import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
+import exercisesReducer from './exercises';
 // import workouts from './workouts'
 // import exercises from './exercises'
 // import single_workout from './single-workout'
 // import single_exercise from './single-exercise'
 
 const reducer = combineReducers(
-{ auth }
+{ 
+  // auth,
+exercises: exercisesReducer 
+}
 );
 
 const middleware = composeWithDevTools(

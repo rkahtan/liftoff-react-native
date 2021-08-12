@@ -20,23 +20,22 @@ export default function Dashboard({ navigation }) {
         Alert.alert('No user data found!')
       } else {
         let dataObj = doc.data();
+        // {"email": "q@q.com",  "firstName": "Q", "lastName": "Q",}
         setFirstName(dataObj.firstName)
       }
     }
     getUserInfo();
   })
 
-  const handlePress = () => {
+  const handleLogout = () => {
     loggingOut();
     navigation.replace('Home');
   };
   const handleExercises = () => {
-    loggingOut();
-    navigation.replace('Home');
+    navigation.replace('Exercises');
   };
   const handleWorkouts = () => {
-    loggingOut();
-    navigation.replace('Home');
+    //navigation.replace('Home');
   };
 
   return (
@@ -49,7 +48,7 @@ export default function Dashboard({ navigation }) {
       <TouchableOpacity style={styles.button} onPress={handleWorkouts}>
         <Text style={styles.buttonText}>See Your Workouts</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={handlePress}>
+      <TouchableOpacity style={styles.button} onPress={handleLogout}>
         <Text style={styles.buttonText}>Log Out</Text>
       </TouchableOpacity>
     </View>
