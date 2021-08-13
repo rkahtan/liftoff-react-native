@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { db, auth } from '../config/keys';
-import axios from 'axios';
+import { db } from '../config/keys';
 import * as firebase from 'firebase';
 import {
   View,
@@ -17,70 +16,74 @@ function Exercises({ navigation }) {
   let currentUserUID = firebase.auth().currentUser.uid;
   const [firstName, setFirstName] = useState('');
   const [exercises, setExercises] = useState([]);
-  useEffect(
-    () => {
-      async function getUserInfo() {
-        let doc = await firebase
-          .firestore()
-          .collection('users')
-          .doc(currentUserUID)
-          .get();
-        if (!doc.exists) {
-          Alert.alert('No user data found!');
-        } else {
-          let dataObj = doc.data();
-          // {"email": "q@q.com",  "firstName": "Q", "lastName": "Q",}
-          setFirstName(dataObj.firstName);
-        }
+  useEffect(() => {
+    async function getUserInfo() {
+      let doc = await firebase
+        .firestore()
+        .collection('users')
+        .doc(currentUserUID)
+        .get();
+      if (!doc.exists) {
+        Alert.alert('No user data found!');
+      } else {
+        let dataObj = doc.data();
+        // {"email": "q@q.com",  "firstName": "Q", "lastName": "Q",}
+        setFirstName(dataObj.firstName);
       }
-      getUserInfo();
-      async function getUserExercises() {
-        //do i need to do an axios call/express route and get db info in there?
-
-        const exercisesRef = db.collection('exercises');
-        const queryRef = await exercisesRef
-          .where('user', '==', currentUserUID)
-          .get();
-
-        // queryRef.forEach(doc => {
-        //   console.log(doc.id, '=>', doc.data());
-        // });
-        // P1XmFBh2Efz0gXjdpSPM => Object {
-        //   "name": "Bicep curl",
-        //   "notes": "",
-        //   "user": "c0TEgVzUpdUwKWYbs10NZA4uNDJ3",
-        //   "weight": "15 lb",
-        // }
-        let exs = [];
-        queryRef.forEach((doc) => {
-          exs.push(doc.data());
-        });
-        //console.log(exs); //[{ex}]
-        
-        return () => setExercises(exs); //exercises remains an empty array
-      }
-      getUserExercises()
-      
-    
     }
-    //[]
-  );
+    getUserInfo();
+    async function getUserExercises() {
+      const exercisesRef = db.collection('exercises');
+      const queryRef = await exercisesRef
+        .where('user', '==', currentUserUID)
+        .get();
+
+      // queryRef.forEach(doc => {
+      //   console.log(doc.id, '=>', doc.data());
+      // });
+      // P1XmFBh2Efz0gXjdpSPM => Object {
+      //   "name": "Bicep curl",
+      //   "notes": "",
+      //   "user": "c0TEgVzUpdUwKWYbs10NZA4uNDJ3",
+      //   "weight": "15 lb",
+      // }
+      let exs = [];
+      queryRef.forEach((doc) => {
+        exs.push(doc.data());
+      });
+
+      //return () => setExercises();
+      setExercises(exs);
+    }
+    getUserExercises();
+  }, []);
 
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>{firstName}'s Exercises</Text>
 
-      {exercises.map((exercise) => {
-        return (
-          <View key={exercise.name}>
-            {/* <Link to={`/exercises/${exercise.id}`}> */}
-            <Text>{exercise.name}</Text>
-            {exercise.weight && <Text>Weight: {exercise.weight}</Text>}
-            {exercise.notes && <Text>Notes: {exercise.notes}</Text>}
-            {/* </Link> */}
-          </View>
-        );
-      })}
+      <View>
+        {exercises.map((exercise, i) => {
+          return (
+            <Text key={i}>
+              {/* <Link to={`/exercises/${exercise.id}`}> */}
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => navigation.navigate('SingleExercise', {
+                  exercise
+                })}
+              >
+                <Text style={styles.text}>{exercise.name}</Text>
+              </TouchableOpacity>
+              
+              {/* {'\n'} */}
+              {/* {exercise.weight && <Text>Weight: {exercise.weight}</Text>}
+              {exercise.notes && <Text>Notes: {exercise.notes}</Text>} */}
+              {/* </Link> */}
+            </Text>
+          );
+        })}
+      </View>
 
       <TouchableOpacity
         style={styles.button}
@@ -118,6 +121,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   text: {
     textAlign: 'center',
     fontSize: 20,
@@ -125,12 +129,15 @@ const styles = StyleSheet.create({
     marginBottom: '10%',
     fontWeight: 'bold',
     color: 'white',
+    padding: 10,
   },
   titleText: {
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
     color: 'white',
+    top: 15,
+    padding: 20,
   },
   textInput: {
     width: 300,
