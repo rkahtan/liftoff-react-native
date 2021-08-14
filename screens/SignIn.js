@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {signIn} from '../API/firebaseMethods';
-// import { auth } from "../firebase";
-// import { connect } from "react-redux";
+import styles from './Stylesheet'
+
 
 
 export default function SignIn() {
@@ -51,44 +51,3 @@ export default function SignIn() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  button: {
-    width: 200,
-    padding: 10,
-    backgroundColor: '#223023',
-    borderWidth: 3,
-    borderColor: 'white',
-    borderRadius: 15,
-    alignSelf: 'center',
-    margin: "4%",
-  },
-  buttonText: {
-    fontSize:20,
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  container: {
-    height: '100%',
-    width: '100%',
-    backgroundColor: '#899C89',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  formInput: {
-    width: 300,
-    fontSize:18,
-    borderWidth: 1,
-    borderColor:'white',
-    padding: 10,
-    margin: 5,
-  },
-  text: {
-    textAlign: 'center',
-    fontSize: 20,
-    margin: 10,
-    fontWeight: 'bold',
-    color: 'white',
-  }
-});

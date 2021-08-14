@@ -1,25 +1,29 @@
 import * as firebase from "firebase";
 import "firebase/firestore";
 import {Alert} from "react-native";
-import db from '../config/keys'
+import {db} from '../config/keys'
 
 export async function registration(email, password, lastName, firstName) {
   try {
     await firebase.auth().createUserWithEmailAndPassword(email, password);
     const currentUser = firebase.auth().currentUser;
+    console.log(currentUser)
 
-    //const db = firebase.firestore();
-    db.collection("users")
+  
+    await db.collection("users")
       .doc(currentUser.uid)
       .set({
         email: currentUser.email,
         lastName: lastName,
         firstName: firstName,
       });
+
+      
   } catch (err) {
     Alert.alert("There is something wrong!!!!", err.message);
   }
 }
+
 
 export async function signIn(email, password) {
   try {

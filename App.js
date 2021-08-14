@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import styles from './screens/Stylesheet'
 
 import { Provider } from 'react-redux';
 
@@ -39,11 +40,11 @@ export default function App() {
           <Stack.Screen name='Home' component={WelcomeScreen} options={{ headerShown: false }} />
           <Stack.Screen name='Sign Up' component={SignUp} />
           <Stack.Screen name='Sign In' component={SignIn} />
-          <Stack.Screen name='Dashboard' component={Dashboard} />
-          <Stack.Screen name='Exercises' component={Exercises} />
-          <Stack.Screen name='AddExercise' component={AddExercise} />
-          <Stack.Screen name='SingleExercise' component={SingleExercise} />
-          <Stack.Screen name='UpdateExercise' component={UpdateExercise} />
+          <Stack.Screen name='Dashboard' component={Dashboard} options={{ headerShown: false }}/>
+          <Stack.Screen name='Exercises' component={Exercises} options={{ headerShown: false }}/>
+          <Stack.Screen name='AddExercise' component={AddExercise} options={{ headerShown: false }}/>
+          <Stack.Screen name='SingleExercise' component={SingleExercise} options={{ headerShown: false }}/>
+          <Stack.Screen name='UpdateExercise' component={UpdateExercise} options={{ headerShown: false }}/>
           
         </Stack.Navigator>
   
@@ -53,11 +54,11 @@ export default function App() {
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
