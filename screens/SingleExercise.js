@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function SingleExercise({ route, navigation }) {
   const { exercise } = route.params;
-
+  
   return (
     <View style={styles.container}>
       <Text>

@@ -66,53 +66,11 @@ function AddExercise({navigation}) {
 
           
        </ScrollView>
-          {/* {this.state.error && (
-            <div>
-              <h1>Error: {this.state.error}</h1>
-            </div>
-          )}
-          {this.state.loading && (
-            <div>
-              <h1>Loading</h1>
-            </div>
-          )}
-        </div>
-
-        {this.props.exercises.map((exercise) => {
-          return (
-            <div key={exercise.id}>
-              <Link to={`/exercises/${exercise.id}`}>
-                <h1>{exercise.name}</h1>
-                {exercise.weight && <h2>Weight: {exercise.weight}</h2>}
-                {exercise.sets && <h2>Sets: {exercise.sets}</h2>}
-                {exercise.reps && <h2>Reps: {exercise.reps}</h2>}
-                {exercise.notes && <h2>Notes: {exercise.notes}</h2>}
-              </Link>
-            </div>
-          );
-        })}
-        <div>
-          <h1>Add An Exercise:</h1>
-   */}
        
       </View>
     );
   }
-// }
 
-// const mapState = (state) => {
-//   return {
-//     exercises: state.exercises,
-//   };
-// };
-
-// const mapDispatch = (dispatch, token) => {
-//   return {
-//     fetchExercises: (token) => dispatch(fetchExercises(token)),
-//   };
-// };
-
-// export default connect(mapState, mapDispatch)(Exercises);
 export default (AddExercise);
 
 const styles = StyleSheet.create({

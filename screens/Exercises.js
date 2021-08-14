@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../config/keys';
+import { db, auth } from '../config/keys';
 import * as firebase from 'firebase';
 import {
   View,
@@ -38,20 +38,19 @@ function Exercises({ navigation }) {
         .where('user', '==', currentUserUID)
         .get();
 
-      // queryRef.forEach(doc => {
-      //   console.log(doc.id, '=>', doc.data());
-      // });
-      // P1XmFBh2Efz0gXjdpSPM => Object {
-      //   "name": "Bicep curl",
-      //   "notes": "",
-      //   "user": "c0TEgVzUpdUwKWYbs10NZA4uNDJ3",
-      //   "weight": "15 lb",
-      // }
+        // Object {
+        //   "id": "vq8rBUT1ucxuSYKF0JFo",
+        //   "name": "Squat",
+        //   "notes": "",
+        //   "user": "c0TEgVzUpdUwKWYbs10NZA4uNDJ3",
+        //   "weight": "50 lb",
+        // },
       let exs = [];
       queryRef.forEach((doc) => {
-        exs.push(doc.data());
+        let id = doc.id
+        exs.push({id, ...doc.data()});
       });
-
+      
       //return () => setExercises();
       setExercises(exs);
     }
@@ -66,7 +65,6 @@ function Exercises({ navigation }) {
         {exercises.map((exercise, i) => {
           return (
             <Text key={i}>
-              {/* <Link to={`/exercises/${exercise.id}`}> */}
               <TouchableOpacity
                 style={styles.button}
                 onPress={() => navigation.navigate('SingleExercise', {
@@ -75,11 +73,6 @@ function Exercises({ navigation }) {
               >
                 <Text style={styles.text}>{exercise.name}</Text>
               </TouchableOpacity>
-              
-              {/* {'\n'} */}
-              {/* {exercise.weight && <Text>Weight: {exercise.weight}</Text>}
-              {exercise.notes && <Text>Notes: {exercise.notes}</Text>} */}
-              {/* </Link> */}
             </Text>
           );
         })}
