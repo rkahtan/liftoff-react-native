@@ -4,7 +4,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import styles from './Stylesheet';
 
 
-
 export default function SingleExercise({ route, navigation }) {
   const { exercise } = route.params;
 
@@ -35,6 +34,8 @@ export default function SingleExercise({ route, navigation }) {
       <View>
         <Image source={require('../assets/generic-chart.png')} />
       </View>
+
+      
 
       <View style={styles.bottomBar}>
         <TouchableOpacity

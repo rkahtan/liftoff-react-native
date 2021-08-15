@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@devexpress/dx-react-chart": "^2.7.6",
+    "@devexpress/dx-react-chart-material-ui": "^2.7.6",
     "@devexpress/dx-react-core": "^2.7.6",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "0.1.10",
@@ -26,6 +27,7 @@
     "express": "^4.17.1",
     "firebase": "8.2.3",
     "jsonwebtoken": "^8.5.1",
+    "material-ui": "^0.20.2",
     "morgan": "^1.10.0",
     "path": "^0.12.7",
     "pg": "^8.7.1",
