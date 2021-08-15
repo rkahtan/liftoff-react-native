@@ -1,15 +1,13 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import styles from './screens/Stylesheet'
 
-import { Provider } from 'react-redux';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import * as firebase from 'firebase';
 import apiKeys from './config/keys';
 
-// import reduxStore from './store'
+
 
 import WelcomeScreen from './screens/WelcomeScreen';
 import SignUp from './screens/SignUp';

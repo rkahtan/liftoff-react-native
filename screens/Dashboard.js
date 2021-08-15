@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Alert} from 'react-native';
+import { View, Text, SafeAreaView, Alert} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as firebase from 'firebase';
 import {loggingOut} from '../API/firebaseMethods';
@@ -48,19 +48,19 @@ export default function Dashboard({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.titleText}>Dashboard</Text>
       <Text style={styles.text}>Hi {firstName}</Text>
       <TouchableOpacity style={styles.button} onPress={handleExercises}>
-        <Text style={styles.buttonText}>See Your Exercises</Text>
+        <Text style={styles.buttonText}>My Exercises</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleWorkouts}>
-        <Text style={styles.buttonText}>See Your Workouts</Text>
+        <Text style={styles.buttonText}>My Profile</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
         <Text style={styles.buttonText}>Log Out</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   )
 }
 

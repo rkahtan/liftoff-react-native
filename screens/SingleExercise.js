@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, SafeAreaView, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import styles from './Stylesheet';
 
@@ -15,10 +15,10 @@ export default function SingleExercise({ route, navigation }) {
   
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.nav}>
         <TouchableOpacity onPress={() => navigation.navigate('Exercises')}>
-          <Text style={styles.text}>Back To Exercises</Text>
+          <Text style={styles.darkText}>Back To Exercises</Text>
         </TouchableOpacity>
       </View>
 
@@ -48,6 +48,6 @@ export default function SingleExercise({ route, navigation }) {
           <Text style={styles.buttonText}>Update This Exercise</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

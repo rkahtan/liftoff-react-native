@@ -4,11 +4,8 @@ import * as firebase from 'firebase';
 import {
   View,
   Text,
-  StyleSheet,
   Alert,
   ScrollView,
-  Keyboard,
-  TextInput,
   SafeAreaView,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -117,17 +114,17 @@ function Exercises({ navigation }) {
     <SafeAreaView style={styles.background}>
       <View style={styles.nav}>
         <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
-          <Text style={styles.text}>Back To Home</Text>
+          <Text style={styles.darkText}>Back To Home</Text>
         </TouchableOpacity>
       </View>
       <ScrollView>
-        <Text>
+        <View style={styles.textBackground}>
           {firstName ? (
-            <Text style={styles.titleText}>{firstName}'s Exercises</Text>
+            <Text style={styles.title}>{firstName}'s Exercises</Text>
           ) : (
-            <Text style={styles.titleText}>Exercises</Text>
+            <Text style={styles.title}>Exercises</Text>
           )}
-        </Text>
+        </View>
 
         <Text style={styles.info}>
           {exercises.length
