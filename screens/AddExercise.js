@@ -13,6 +13,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as firebase from 'firebase';
 import styles from './Stylesheet';
 
+//ADD TAG
+
 function AddExercise({ navigation }) {
   const [name, setName] = useState('');
   const [weight, setWeight] = useState('');
