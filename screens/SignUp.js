@@ -43,8 +43,6 @@ export default function SignUp({ navigation }) {
   };
 
 
-
-
   return (
     <SafeAreaView>
      <View style={styles.container}>

@@ -9,9 +9,37 @@ import {
   ScrollView,
   Keyboard,
   TextInput,
+  SafeAreaView,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import styles from './Stylesheet';
+
+
+let dummyDataFUFirestore = [
+  {name: 'bench press',
+  weight: '20 lbs'},
+  {name: 'front squat',
+  weight: '35 lbs'},
+  {name: 'squat',
+  weight: '50 lbs'},
+  {name: 'dumbell row',
+  weight: '45 lbs'},
+  {name: 'kettlebell row',
+  weight: '40 lbs'},
+  {name: 'arnold press',
+  weight: '40 lbs'},
+  {name: 'upright row',
+  weight: '50 lbs'},
+  {name: 'split squat',
+  weight: '50 lbs'},
+  {name: 'goblet squat',
+  weight: '55 lbs'},
+  {name: 'shoulder press',
+  weight: '40 lbs'}
+]
+//other ideas:
+//group exercises by tag name? (quads, triceps, accessory exercises, etc)
+//get all exercises by user, sort by tag, make section header the tag?
 
 function Exercises({ navigation }) {
   let currentUserUID = firebase.auth().currentUser.uid;
@@ -38,6 +66,12 @@ function Exercises({ navigation }) {
       const queryRef = await exercisesRef
         .where('user', '==', currentUserUID)
         .get();
+      //if info isn't updating properly try snapshot method (updates with db changes)
+      // db.collection('exercises').onSnapshot();
+
+      //OR use info from cache to reduce database queries
+      //https://medium.com/firebase-tips-tricks/how-to-drastically-reduce-the-number-of-reads-when-no-documents-are-changed-in-firestore-8760e2f25e9e
+      //https://medium.com/firebase-tips-tricks/how-to-reduce-the-number-of-read-operations-in-cloud-firestore-9f9d6f5a271
 
       // Object {
       //   "id": "vq8rBUT1ucxuSYKF0JFo",
@@ -56,100 +90,80 @@ function Exercises({ navigation }) {
       setExercises(exs);
     }
     getUserExercises();
-  }, [exercises]);
+  }, 
+  [exercises]
+  //or [] 
+  //if the hook keeps running (tho only when exercises change?) and is calling db too much
+  );
+
 
   return (
-    <View style={styles.container}>
+    
+    <SafeAreaView style={styles.background}>
+      
+      
       <View style={styles.nav}>
         <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
           <Text style={styles.text}>Back To Home</Text>
         </TouchableOpacity>
       </View>
-
-      <Text style={styles.titleText}>{firstName}'s Exercises</Text>
-
-      <View style={styles.exercises}>
-        {exercises.map((exercise, i) => {
-          return (
-            <Text key={i}>
-              <TouchableOpacity
-                style={styles.exerciseButton}
-                onPress={() =>
-                  navigation.navigate('SingleExercise', {
-                    exercise,
-                  })
-                }
-              >
-                <Text style={styles.buttonText}>{exercise.name}</Text>
-              </TouchableOpacity>
-            </Text>
-          );
-        })}
-
+<ScrollView>
+     
+        <Text>
+          {firstName ? (
+            <Text style={styles.titleText}>{firstName}'s Exercises</Text>
+          ) : (
+            <Text style={styles.titleText}>Exercises</Text>
+          )}
+        </Text>
+         
+        <Text style={styles.info}>
+          {exercises.length
+            ? exercises.map((exercise, i) => {
+                return (
+                  <Text key={i}>
+                    <TouchableOpacity
+                      style={styles.exerciseButton}
+                      onPress={() =>
+                        navigation.navigate('SingleExercise', {
+                          exercise,
+                        })
+                      }
+                    >
+                      <Text style={styles.buttonText}>{exercise.name}</Text>
+                    </TouchableOpacity>
+                  </Text>
+                );
+              })
+            : dummyDataFUFirestore.map((exercise, i) => {
+              return (
+                <Text key={i}>
+                  <TouchableOpacity
+                    style={styles.exerciseButton}
+                    onPress={() =>
+                      navigation.navigate('SingleExercise', {
+                        exercise,
+                      })
+                    }
+                  >
+                    <Text style={styles.buttonText}>{exercise.name}</Text>
+                  </TouchableOpacity>
+                </Text>
+              );
+            })
+            }
+        </Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('AddExercise')}
         >
           <Text style={styles.buttonText}>Add An Exercise</Text>
         </TouchableOpacity>
-      </View>
-    </View>
+       
+        </ScrollView>
+      </SafeAreaView>
+
   );
 }
 
 export default Exercises;
-
-// const styles = StyleSheet.create({
-//   nav: {
-//     top: 0
-//   },
-//   button: {
-//     width: 200,
-//     padding: 10,
-//     backgroundColor: '#223023',
-//     borderWidth: 3,
-//     borderColor: 'white',
-//     borderRadius: 15,
-//     alignSelf: 'center',
-//     margin: '4%',
-//   },
-//   buttonText: {
-//     fontSize: 20,
-//     color: 'white',
-//     fontWeight: 'bold',
-//     textAlign: 'center',
-//   },
-//   container: {
-//     height: '100%',
-//     width: '100%',
-//     backgroundColor: '#899C89',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-
-//   text: {
-//     textAlign: 'center',
-//     fontSize: 20,
-//     marginTop: '2%',
-//     marginBottom: '10%',
-//     fontWeight: 'bold',
-//     color: 'white',
-//     padding: 10,
-//   },
-//   titleText: {
-//     textAlign: 'center',
-//     fontSize: 30,
-//     fontWeight: 'bold',
-//     color: 'white',
-//     top: 15,
-//     padding: 20,
-//   },
-//   textInput: {
-//     width: 300,
-//     fontSize: 18,
-//     borderWidth: 1,
-//     borderColor: 'white',
-//     padding: 10,
-//     margin: 5,
-//   },
-// });

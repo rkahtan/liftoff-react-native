@@ -54,9 +54,6 @@ export default styles = StyleSheet.create({
     borderRadius: 15,
     alignSelf: 'center',
   },
-  exercises: {
-    alignItems: 'center',
-  },
   formInput: {
     width: 300,
     fontSize: 18,
@@ -66,12 +63,15 @@ export default styles = StyleSheet.create({
     margin: 5,
   },
   info: {
-    //single exercise info
     alignItems: 'center',
+    
   },
   nav: {
-    position: 'absolute',
-    top: 70,
+    // position: 'absolute',
+    // top: 70,
+  },
+  scroll: {
+    flex: 1
   },
   text: {
     textAlign: 'center',
@@ -107,5 +107,6 @@ export default styles = StyleSheet.create({
     color: '#899C89',
     top: 15,
     padding: 20,
+    textAlign: 'center',
   },
 });

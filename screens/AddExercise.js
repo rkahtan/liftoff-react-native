@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import { db, auth } from '../config/keys';
-import { View, Text, StyleSheet, Alert, ScrollView, Keyboard, TextInput } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Alert,
+  ScrollView,
+  Keyboard,
+  TextInput,
+} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as firebase from 'firebase';
-import styles from './Stylesheet'
+import styles from './Stylesheet';
 
-
-function AddExercise({navigation}) {
+function AddExercise({ navigation }) {
   const [name, setName] = useState('');
   const [weight, setWeight] = useState('');
   const [notes, setNotes] = useState('');
@@ -23,58 +30,80 @@ function AddExercise({navigation}) {
           name: name,
           weight: weight,
           notes: notes,
-          user: currentUserUID
-        })
+          user: currentUserUID,
+        });
 
-        navigation.navigate('Exercises')
-        //doesn't show new exercuse upon re-navigation 
+        if (weight) {
+          console.log('weight');
+          //add metadata field if weight is used
+        }
+
+        let time = new Date();
+        // Create file metadata to update https://firebase.google.com/docs/storage/web/file-metadata#file_metadata_properties
+        let newMetadata = {
+          time: weight,
+        };
+
+        // Update metadata 
+        //forestRef.updateMetadata(newMetadata)
+
+        //getting metsdata - doesn't work rn but might just be bc no metadata?
+        // docRef.getMetadata()
+        // .then((metadata) => {
+        //   console.log(metadata)
+        // })
+
+        //get metadata and use it to populate chart
+
+        navigation.navigate('Exercises');
+        //doesn't show new exercise upon re-navigation
         //does show new exercise when you go back home and then click into it
       }
     } catch (error) {
-      alert(error)
+      alert(error);
     }
   }
 
-    return (
-      <View style={styles.container}>
+  return (
+    <View style={styles.container}>
+      <View style={styles.nav}>
+        <TouchableOpacity onPress={() => navigation.navigate('Exercises')}>
+          <Text style={styles.text}>Back To Exercises</Text>
+        </TouchableOpacity>
+      </View>
+      <Text>
         <Text style={styles.titleText}>Add An Exercise</Text>
-        
-        <ScrollView onBlur={Keyboard.dismiss}>
-          <TextInput
+      </Text>
+      <View onBlur={Keyboard.dismiss}>
+        <TextInput
           style={styles.textInput}
-          placeholder="Exercise Name*"
+          placeholder='Exercise Name*'
           value={name}
           onChangeText={(name) => setName(name)}
-          />
-         <TextInput
+        />
+        <TextInput
           style={styles.textInput}
-          placeholder="Weight*"
+          placeholder='Weight*'
           value={weight}
           onChangeText={(weight) => setWeight(weight)}
-         />
+        />
 
-         <TextInput
+        <TextInput
           style={styles.textInput}
-          placeholder="Any Notes?*"
+          placeholder='Any Notes?*'
           value={notes}
           onChangeText={(notes) => setNotes(notes)}
-         />
-
-          
-          <TouchableOpacity style={styles.button} 
-          onPress={handlePress}
-          >
-           <Text style={styles.buttonText}>Create Exercise</Text>
-          </TouchableOpacity>
-
-          
-       </ScrollView>
-       
+        />
       </View>
-    );
-  }
 
-export default (AddExercise);
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
+        <Text style={styles.buttonText}>Create Exercise</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+export default AddExercise;
 
 // const styles = StyleSheet.create({
 //   button: {
