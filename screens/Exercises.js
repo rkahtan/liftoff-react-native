@@ -75,7 +75,15 @@ function Exercises({ navigation }) {
         const exercisesRef = db.collection('exercises');
         const queryRef = await exercisesRef
           .where('user', '==', currentUserUID)
+          .orderBy('tag')
           .get();
+
+        
+
+       
+
+        //not including exercises with no tag! make name and tag mandatory
+        
         //if info isn't updating properly try snapshot method (updates with db changes)
         // db.collection('exercises').onSnapshot();
 
@@ -91,6 +99,8 @@ function Exercises({ navigation }) {
         //   "weight": "50 lb",
         // },
         let exs = [];
+
+
         queryRef.forEach((doc) => {
           let id = doc.id;
           exs.push({ id, ...doc.data() });
@@ -105,8 +115,8 @@ function Exercises({ navigation }) {
       }
       getUserExercises();
     },
-    [exercises]
-    //or []
+    // [exercises]
+    []
     //if the hook keeps running (tho only when exercises change?) and is calling db too much
   );
 
@@ -131,6 +141,12 @@ function Exercises({ navigation }) {
             ? exercises.map((exercise, i) => {
                 return (
                   <Text key={i}>
+                     {!exercises[i - 1] ||
+                    exercise.tag !== exercises[i - 1].tag ? (
+                      <Text style={styles.text} key={i}>
+                        {exercise.tag}
+                      </Text>
+                    ) : ''}
                     <TouchableOpacity
                       style={styles.exerciseButton}
                       onPress={() =>

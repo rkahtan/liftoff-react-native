@@ -17,6 +17,8 @@ export default function UpdateExercise({ route, navigation }) {
   const [name, setName] = useState('');
   const [weight, setWeight] = useState('');
   const [notes, setNotes] = useState('');
+  const [tag, setTag] = useState('');
+
 
   async function handlePress() {
     try {
@@ -26,6 +28,7 @@ export default function UpdateExercise({ route, navigation }) {
           name,
           weight,
           notes,
+          tag
         };
         for (let key in updateObj) {
           if (updateObj[key] === '') delete updateObj[key];
@@ -86,6 +89,12 @@ export default function UpdateExercise({ route, navigation }) {
           value={notes}
           onChangeText={(notes) => setNotes(notes)}
         />
+        <TextInput
+          style={styles.textInput}
+          placeholder='Tag*'
+          value={tag}
+          onChangeText={(tag) => setTag(tag)}
+        />
 
         <TouchableOpacity style={styles.button} onPress={handlePress}>
           <Text style={styles.buttonText}>Update Exercise</Text>
@@ -95,50 +104,3 @@ export default function UpdateExercise({ route, navigation }) {
   );
 }
 
-// const styles = StyleSheet.create({
-//   button: {
-//     width: 200,
-//     padding: 10,
-//     backgroundColor: '#223023',
-//     borderWidth: 3,
-//     borderColor: 'white',
-//     borderRadius: 15,
-//     alignSelf: 'center',
-//     margin: '4%',
-//   },
-//   buttonText: {
-//     fontSize: 20,
-//     color: 'white',
-//     fontWeight: 'bold',
-//     textAlign: 'center',
-//   },
-//   container: {
-//     height: '100%',
-//     width: '100%',
-//     backgroundColor: '#899C89',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   text: {
-//     textAlign: 'center',
-//     fontSize: 20,
-//     marginTop: '2%',
-//     marginBottom: '10%',
-//     fontWeight: 'bold',
-//     color: 'white',
-//   },
-//   titleText: {
-//     textAlign: 'center',
-//     fontSize: 30,
-//     fontWeight: 'bold',
-//     color: 'white',
-//   },
-//   textInput: {
-//     width: 300,
-//     fontSize: 18,
-//     borderWidth: 1,
-//     borderColor: 'white',
-//     padding: 10,
-//     margin: 5,
-//   },
-// });

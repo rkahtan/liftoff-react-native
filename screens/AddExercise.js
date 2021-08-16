@@ -5,7 +5,8 @@ import {
   Text,
   Keyboard,
   TextInput,
-  SafeAreaView
+  SafeAreaView,
+  Alert,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as firebase from 'firebase';
@@ -17,6 +18,7 @@ function AddExercise({ navigation }) {
   const [name, setName] = useState('');
   const [weight, setWeight] = useState('');
   const [notes, setNotes] = useState('');
+  const [tag, setTag] = useState('');
   // const emptyState = () => {
   //   setName('');
   //   setWeight('');
@@ -25,39 +27,47 @@ function AddExercise({ navigation }) {
   async function handlePress() {
     try {
       if (auth().currentUser) {
-        let currentUserUID = firebase.auth().currentUser.uid;
-        const docRef = await db.collection('exercises').add({
-          name: name,
-          weight: weight,
-          notes: notes,
-          user: currentUserUID,
-        });
-
-        if (weight) {
-          console.log('weight');
-          //add metadata field if weight is used
+        if (!name) {
+          Alert.alert('Name field is required.');
         }
 
-        let time = new Date();
-        // Create file metadata to update https://firebase.google.com/docs/storage/web/file-metadata#file_metadata_properties
-        let newMetadata = {
-          time: weight,
-        };
+        if (!tag) {
+          Alert.alert('Tag field is required.');
+        } else {
+          let currentUserUID = firebase.auth().currentUser.uid;
+          const docRef = await db.collection('exercises').add({
+            name: name,
+            weight: weight,
+            notes: notes,
+            user: currentUserUID,
+            tag: tag,
+          });
 
-        // Update metadata 
-        //forestRef.updateMetadata(newMetadata)
+          if (weight) {
+            console.log('weight');
+            //add metadata field if weight is used
+            let time = new Date();
+            // Create file metadata to update https://firebase.google.com/docs/storage/web/file-metadata#file_metadata_properties
+            let newMetadata = {
+              time: weight,
+            };
+          }
 
-        //getting metsdata - doesn't work rn but might just be bc no metadata?
-        // docRef.getMetadata()
-        // .then((metadata) => {
-        //   console.log(metadata)
-        // })
+          // Update metadata
+          //forestRef.updateMetadata(newMetadata)
 
-        //get metadata and use it to populate chart
+          //getting metsdata - doesn't work rn but might just be bc no metadata?
+          // docRef.getMetadata()
+          // .then((metadata) => {
+          //   console.log(metadata)
+          // })
 
-        navigation.navigate('Exercises');
-        //doesn't show new exercise upon re-navigation
-        //does show new exercise when you go back home and then click into it
+          //get metadata and use it to populate chart
+
+          navigation.navigate('Exercises');
+          //doesn't show new exercise upon re-navigation
+          //does show new exercise when you go back home and then click into it
+        }
       }
     } catch (error) {
       alert(error);
@@ -93,6 +103,12 @@ function AddExercise({ navigation }) {
           placeholder='Any Notes?*'
           value={notes}
           onChangeText={(notes) => setNotes(notes)}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder='Tag*'
+          value={tag}
+          onChangeText={(tag) => setTag(tag)}
         />
       </View>
 
