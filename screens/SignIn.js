@@ -22,7 +22,7 @@ export default function SignIn({ navigation }) {
     signIn(email, password).then(navigation.navigate('Dashboard'))
     // setEmail('');
     // setPassword('');
-    //navigate to dashboard if auth is ok
+    
   };
 
 

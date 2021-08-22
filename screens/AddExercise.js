@@ -12,7 +12,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as firebase from 'firebase';
 import styles from './Stylesheet';
 
-//ADD TAG
 
 function AddExercise({ navigation }) {
   const [name, setName] = useState('');
@@ -53,20 +52,9 @@ function AddExercise({ navigation }) {
             };
           }
 
-          // Update metadata
-          //forestRef.updateMetadata(newMetadata)
 
-          //getting metsdata - doesn't work rn but might just be bc no metadata?
-          // docRef.getMetadata()
-          // .then((metadata) => {
-          //   console.log(metadata)
-          // })
-
-          //get metadata and use it to populate chart
 
           navigation.navigate('Exercises');
-          //doesn't show new exercise upon re-navigation
-          //does show new exercise when you go back home and then click into it
         }
       }
     } catch (error) {
@@ -76,11 +64,6 @@ function AddExercise({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <View style={styles.nav}>
-        <TouchableOpacity onPress={() => navigation.navigate('Exercises')}>
-          <Text style={styles.darkText}>Back To Exercises</Text>
-        </TouchableOpacity>
-      </View> */}
       <Text>
         <Text style={styles.titleText}>Add An Exercise</Text>
       </Text>
@@ -120,51 +103,3 @@ function AddExercise({ navigation }) {
 }
 
 export default AddExercise;
-
-// const styles = StyleSheet.create({
-//   button: {
-//     width: 200,
-//     padding: 10,
-//     backgroundColor: '#223023',
-//     borderWidth: 3,
-//     borderColor: 'white',
-//     borderRadius: 15,
-//     alignSelf: 'center',
-//     margin: "4%",
-//   },
-//   buttonText: {
-//     fontSize:20,
-//     color: 'white',
-//     fontWeight: 'bold',
-//     textAlign: 'center',
-//   },
-//   container: {
-//     height: '100%',
-//     width: '100%',
-//     backgroundColor: '#899C89',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   text: {
-//     textAlign: 'center',
-//     fontSize: 20,
-//     marginTop: '2%',
-//     marginBottom: '10%',
-//     fontWeight: 'bold',
-//     color: 'white',
-//   },
-//   titleText: {
-//     textAlign: 'center',
-//     fontSize: 30,
-//     fontWeight: 'bold',
-//     color: 'white',
-//   },
-//   textInput: {
-//     width: 300,
-//     fontSize:18,
-//     borderWidth: 1,
-//     borderColor:'white',
-//     padding: 10,
-//     margin: 5,
-//   },
-// });

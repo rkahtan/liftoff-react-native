@@ -62,11 +62,7 @@ export default function UpdateExercise({ route, navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <View style={styles.nav}>
-        <TouchableOpacity onPress={() => navigation.navigate('Exercises')}>
-          <Text style={styles.darkText}>Back To Exercises</Text>
-        </TouchableOpacity>
-      </View> */}
+    
       <Text style={styles.titleText}>Update Exercise</Text>
 
       <ScrollView onBlur={Keyboard.dismiss}>
