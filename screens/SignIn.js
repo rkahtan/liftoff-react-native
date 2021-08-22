@@ -4,9 +4,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import {signIn} from '../API/firebaseMethods';
 import styles from './Stylesheet'
 
+//implement different keyboards (email, etc)
 
-
-export default function SignIn() {
+export default function SignIn({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,9 +19,10 @@ export default function SignIn() {
       Alert.alert('Password field is required.');
     }
 
-    signIn(email, password);
-    setEmail('');
-    setPassword('');
+    signIn(email, password).then(navigation.navigate('Dashboard'))
+    // setEmail('');
+    // setPassword('');
+    //navigate to dashboard if auth is ok
   };
 
 

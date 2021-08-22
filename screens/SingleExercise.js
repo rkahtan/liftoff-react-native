@@ -15,11 +15,11 @@ export default function SingleExercise({ route, navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.nav}>
+      {/* <View style={styles.nav}>
         <TouchableOpacity onPress={() => navigation.navigate('Exercises')}>
           <Text style={styles.darkText}>Back To Exercises</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       <View style={styles.info}>
         <Text>
@@ -31,9 +31,9 @@ export default function SingleExercise({ route, navigation }) {
         </Text>
       </View>
 
-      <View>
+      {/* <View>
         <Image source={require('../assets/generic-chart.png')} />
-      </View>
+      </View> */}
 
       
 

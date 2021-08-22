@@ -76,11 +76,11 @@ function AddExercise({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.nav}>
+      {/* <View style={styles.nav}>
         <TouchableOpacity onPress={() => navigation.navigate('Exercises')}>
           <Text style={styles.darkText}>Back To Exercises</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
       <Text>
         <Text style={styles.titleText}>Add An Exercise</Text>
       </Text>

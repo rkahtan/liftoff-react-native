@@ -46,9 +46,7 @@ let dummyDataFUFirestore = [
   { name: 'shoulder press', weight: '40 lbs', tag: 'shoulders' },
   ,
 ];
-//other ideas:
-//group exercises by tag name? (quads, triceps, accessory exercises, etc)
-//get all exercises by user, sort by tag, make section header the tag?
+
 
 function Exercises({ navigation }) {
   let currentUserUID = firebase.auth().currentUser.uid;
@@ -123,9 +121,9 @@ function Exercises({ navigation }) {
   return (
     <SafeAreaView style={styles.background}>
       <View style={styles.nav}>
-        <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
           <Text style={styles.darkText}>Back To Home</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       <ScrollView>
         <View style={styles.textBackground}>
@@ -186,12 +184,12 @@ function Exercises({ navigation }) {
                 );
               })}
         </Text>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('AddExercise')}
         >
           <Text style={styles.buttonText}>Add An Exercise</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </ScrollView>
     </SafeAreaView>
   );
