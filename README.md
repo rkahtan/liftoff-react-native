@@ -7,4 +7,6 @@ A workout tracking app, in which users can:
 -create a tag for exercise groups to keep associated exercises together  
 -update any aspect of an exercise (if, for example, they begin to lift a heavier weight or need to remember a new note on their form)  
 
-Technologies: React Native, Google Firebase, Expo
+Technologies: React Native, Google Firebase, Expo  
+
+To run this app, load the QR code at: https://expo.dev/@rk-expo/liftoff
