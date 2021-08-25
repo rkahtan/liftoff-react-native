@@ -12,6 +12,7 @@ const BottomTabNavigator = () => {
       <Tab.Navigator>
        
         <Tab.Screen name='Home' component={MainStackNavigator}   options={{ headerShown: false }}/>
+        {/* is there a way to prevent navigation to these before login? they throw errors at the moment */}
         <Tab.Screen name='Exercises' component={ExercisesStackNavigator}   options={{ headerShown: false }}/>
         <Tab.Screen name='Add Exercise' component={AddExercise}   options={{ headerShown: false }}/>
        

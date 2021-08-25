@@ -11,24 +11,6 @@ import {
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import styles from './Stylesheet';
 
-// let dummyDataFUFirestore = [
-//   [{ name: 'bench press', weight: '20 lbs', tag: 'chest' }],
-//   [{ name: 'front squat', weight: '35 lbs', tag: 'quads' }],
-//   [
-//     { name: 'squat', weight: '50 lbs', tag: 'legs' },
-//     { name: 'split squat', weight: '50 lbs', tag: 'legs' },
-//     { name: 'goblet squat', weight: '55 lbs', tag: 'legs' },
-//   ],
-//   [
-//     { name: 'dumbell row', weight: '45 lbs', tag: 'back' },
-//     { name: 'kettlebell row', weight: '40 lbs', tag: 'back' },
-//   ],
-//   [
-//     { name: 'arnold press', weight: '40 lbs', tag: 'shoulders' },
-//     { name: 'upright row', weight: '50 lbs', tag: 'shoulders' },
-//     { name: 'shoulder press', weight: '40 lbs', tag: 'shoulders' },
-//   ],
-// ];
 
 let dummyDataFUFirestore = [
   { name: 'bench press', weight: '20 lbs', tag: 'chest' },
@@ -78,12 +60,6 @@ function Exercises({ navigation }) {
 
         
 
-       
-
-        //not including exercises with no tag! make name and tag mandatory
-        
-        //if info isn't updating properly try snapshot method (updates with db changes)
-        // db.collection('exercises').onSnapshot();
 
         //OR use info from cache to reduce database queries
         //https://medium.com/firebase-tips-tricks/how-to-drastically-reduce-the-number-of-reads-when-no-documents-are-changed-in-firestore-8760e2f25e9e
@@ -104,11 +80,6 @@ function Exercises({ navigation }) {
           exs.push({ id, ...doc.data() });
         });
 
-        //sort by tag
-        //group each tag into a sub-array?
-        //change map function
-
-        //return () => setExercises();
         setExercises(exs);
       }
       getUserExercises();
@@ -121,9 +92,6 @@ function Exercises({ navigation }) {
   return (
     <SafeAreaView style={styles.background}>
       <View style={styles.nav}>
-        {/* <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
-          <Text style={styles.darkText}>Back To Home</Text>
-        </TouchableOpacity> */}
       </View>
       <ScrollView>
         <View style={styles.textBackground}>
@@ -184,12 +152,6 @@ function Exercises({ navigation }) {
                 );
               })}
         </Text>
-        {/* <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('AddExercise')}
-        >
-          <Text style={styles.buttonText}>Add An Exercise</Text>
-        </TouchableOpacity> */}
       </ScrollView>
     </SafeAreaView>
   );

@@ -7,11 +7,12 @@ import styles from './Stylesheet';
 import { db } from '../config/keys';
 
 export default function Dashboard({ navigation }) {
-  let currentUserUID = firebase.auth().currentUser.uid;
+  // let currentUserUID = firebase.auth().currentUser.uid;
   const [firstName, setFirstName] = useState('');
 
   useEffect(() => {
     async function getUserInfo() {
+      let currentUserUID = firebase.auth().currentUser.uid;
       let doc = await db.collection('users').doc(currentUserUID).get();
 
       if (!doc.exists) {
@@ -27,7 +28,7 @@ export default function Dashboard({ navigation }) {
 
   const handleLogout = () => {
     loggingOut();
-    navigation.replace('Home');
+    navigation.replace('Welcome');
   };
 
   return (

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "liftoff-react-native",
-    "slug": "liftoff-react-native",
+    "name": "liftoff",
+    "slug": "liftoff",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "A workout tracking app that helps users organize their exercises and exercise data that make up different workouts. Work in progress.\nBuilt using JavaScript, React Native, Google Firebase, Expo \n",
+    "githubUrl": "https://github.com/rkahtan/liftoff-react-native"
   }
 }

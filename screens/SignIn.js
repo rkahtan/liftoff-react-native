@@ -20,6 +20,8 @@ export default function SignIn({ navigation }) {
     }
 
     signIn(email, password).then(navigation.navigate('Dashboard'))
+    //need an else if sign in doesn't go well
+    
     // setEmail('');
     // setPassword('');
     
