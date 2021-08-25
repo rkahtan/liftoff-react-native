@@ -9,4 +9,4 @@ A workout tracking app, in which users can:
 
 Technologies: React Native, Google Firebase, Expo  
 
-To run this app, load the QR code at: https://expo.dev/@rk-expo/liftoff
+To run this app download Expo Go at https://expo.dev/client and load the QR code at: https://expo.dev/@rk-expo/liftoff
